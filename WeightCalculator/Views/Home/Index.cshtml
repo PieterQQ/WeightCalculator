@@ -1,31 +1,79 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desired weight calculator</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+          rel="stylesheet" />
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__heading">
+            Desired Weight calculator
+        </h1>
+    </header>
+    <main class="content">
+        <section class="form" data-form>
+            <article class="form__item">
+                <label for="weight-initial" class="form__label">Initial weight:</label>
+                <div class="form__data">
+                    <input type="range"
+                           name="weight-initial"
+                           id="weight-initial"
+                           class="form__input"
+                           step="1" />
+                    <p class="form__result" data-initial-weight-result>85 kg</p>
+                </div>
+            </article>
+            <article class="form__item">
+                <label for="weight-desired" class="form__label">Desired weight:</label>
+                <div class="form__data">
+                    <input type="range"
+                           name="weight-desired"
+                           id="weight-desired"
+                           class="form__input"
+                           step="1" />
+                    <p class="form__result" data-desired-weight-result>85 kg</p>
+                </div>
+            </article>
+            <article class="form__item">
+                <label for="height" class="form__label">Height:</label>
+                <div class="form__data">
+                    <input type="range"
+                           name="height"
+                           id="height"
+                           class="form__input"
+                           step="1" />
+                    <p class="form__result" data-height-result>170 cm</p>
+                </div>
+            </article>
+            <article class="form__item">
+                <label for="start-date" class="form__label">Start date:</label>
+                <div class="form__data">
+                    <input type="date"
+                           name="start-date"
+                           id="start-date"
+                           class="form__input" />
+                </div>
+            </article>
+            <article class="form__item">
+                <label for="end-date" class="form__label">End date:</label>
+                <div class="form__data">
+                    <input type="date"
+                           name="end-date"
+                           id="end-date"
+                           class="form__input" />
+                </div>
+            </article>
+            <button class="form__button" data-button>Count</button>
+        </section>
+    </main>
+    <script src="./js/index.js"></script>
+    <script>
+      const app = new App();
+      app.initializeApp();
+    </script>
+</body>
+</html>
