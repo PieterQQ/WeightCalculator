@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@model WeightCalculator.ViewModel.BmiVM
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -17,58 +18,67 @@
     </header>
     <main class="content">
         <section class="form" data-form>
-            <article class="form__item">
-                <label for="weight-initial" class="form__label">Initial weight:</label>
-                <div class="form__data">
-                    <input type="range"
-                           name="weight-initial"
-                           id="weight-initial"
-                           class="form__input"
-                           step="1" />
-                    <p class="form__result" data-initial-weight-result>85 kg</p>
-                </div>
-            </article>
-            <article class="form__item">
-                <label for="weight-desired" class="form__label">Desired weight:</label>
-                <div class="form__data">
-                    <input type="range"
-                           name="weight-desired"
-                           id="weight-desired"
-                           class="form__input"
-                           step="1" />
-                    <p class="form__result" data-desired-weight-result>85 kg</p>
-                </div>
-            </article>
-            <article class="form__item">
-                <label for="height" class="form__label">Height:</label>
-                <div class="form__data">
-                    <input type="range"
-                           name="height"
-                           id="height"
-                           class="form__input"
-                           step="1" />
-                    <p class="form__result" data-height-result>170 cm</p>
-                </div>
-            </article>
-            <article class="form__item">
-                <label for="start-date" class="form__label">Start date:</label>
-                <div class="form__data">
-                    <input type="date"
-                           name="start-date"
-                           id="start-date"
-                           class="form__input" />
-                </div>
-            </article>
-            <article class="form__item">
-                <label for="end-date" class="form__label">End date:</label>
-                <div class="form__data">
-                    <input type="date"
-                           name="end-date"
-                           id="end-date"
-                           class="form__input" />
-                </div>
-            </article>
-            <button class="form__button" data-button>Count</button>
+            @using (Html.BeginForm("Count", "Home", FormMethod.Post))
+            {
+                <article class="form__item">
+                    <label for="weight-initial" class="form__label">@Html.LabelFor(b => b.InitWeight, "Initial Weight:")</label>
+                    <div class="form__data">
+                        <input type="range"
+                               name="InitWeight"
+                               id="InitWeight"
+                               class="form__input"
+                               step="1"
+                               min="30"
+                               max="200"/>
+                        <p class="form__result" data-initial-weight-result>85 kg</p>
+                    </div>
+                </article>
+                <article class="form__item">
+                    <label for="weight-desired" class="form__label">@Html.LabelFor(b => b.DesiredWeight, "Desired Weight:")</label>
+                    <div class="form__data">
+                        <input type="range"
+                               name="DesiredWeight"
+                               id="DesiredWeight"
+                               class="form__input"
+                               step="1"
+                               min="30"
+                               max="200"/>
+                        <p class="form__result" data-desired-weight-result>85 kg</p>
+                    </div>
+                </article>
+                <article class="form__item">
+                    <label for="height" class="form__label">@Html.LabelFor(b => b.Height, "Height:")</label>
+                    <div class="form__data">
+                        <input type="range"
+                               name="Height"
+                               id="Height"
+                               class="form__input"
+                               step="1"
+                               min="90"
+                               max="250"/>
+                        <p class="form__result" data-height-result>85 kg</p>
+                    </div>
+                </article>
+                <article class="form__item">
+                    <label for="start-date" class="form__label">@Html.LabelFor(b => b.StartDate, "Start date:")</label>
+                    <div class="form__data">
+                        <input type="date"
+                               name="StartDate"
+                               id="StartDate"
+                               class="form__input" />
+                    </div>
+                </article>
+                <article class="form__item">
+                    <label for="end-date" class="form__label">@Html.LabelFor(b => b.EndDate, "End date:")</label>
+                    <div class="form__data">
+                        <input type="date"
+                               name="EndDate"
+                               id="EndDate"
+                               class="form__input" />
+                    </div>
+                </article>
+                <button class="form__button" data-button>Count</button>
+            }
         </section>
     </main>
     <script src="./js/index.js"></script>
