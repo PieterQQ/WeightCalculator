@@ -29,8 +29,10 @@
                                class="form__input"
                                step="1"
                                min="30"
-                               max="200" />
-                        <p class="form__result" data-initial-weight-result>85 kg</p>
+                               max="200"
+                               value="85"
+                              oninput=myFunction(this.name,"InitWeightoutput") />
+                        <p class="form__result"id="InitWeightoutput" data-initial-weight-result>85 kg</p>
                     </div>
                 </article>
                 <article class="form__item">
@@ -42,8 +44,10 @@
                                class="form__input"
                                step="1"
                                min="30"
-                               max="200" />
-                        <p class="form__result" data-desired-weight-result>85 kg</p>
+                               max="200"
+                                 value="85"
+                                 oninput=myFunction(this.name,"DesiredWeightoutput") />
+                        <p class="form__result" id="DesiredWeightoutput" data-desired-weight-result>85 kg</p>
                     </div>
                 </article>
                 <article class="form__item">
@@ -57,8 +61,8 @@
                                min="90"
                                max="250"
                                value="160"
-                               oninput="myFunction()" />
-                        <p class="form__result" id="heightoutput"  data-height-result> 160 cm</p>
+                               oninput=myFunction(this.name,"HeightOutput") />
+                        <p class="form__result" id="HeightOutput"  data-height-result> 160 cm</p>
                     </div>
                 </article>
                 <article class="form__item">
@@ -87,9 +91,12 @@
     <script>
         const app = new App();
         app.initializeApp();
-           function myFunction() {
-            var x = document.getElementById("Height").value;
-            document.getElementById("heightoutput").innerHTML = x+" cm";
+           function myFunction(name,nameoutput) {
+               var x = document.getElementById(name).value;
+               if (document.getElementById(name).id=="Height")
+                   document.getElementById(nameoutput).innerHTML = x + " cm";
+               else
+                   document.getElementById(nameoutput).innerHTML = x + " kg";
           }
 
 
