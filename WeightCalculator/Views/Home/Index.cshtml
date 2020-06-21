@@ -29,7 +29,7 @@
                                class="form__input"
                                step="1"
                                min="30"
-                               max="200"/>
+                               max="200" />
                         <p class="form__result" data-initial-weight-result>85 kg</p>
                     </div>
                 </article>
@@ -42,7 +42,7 @@
                                class="form__input"
                                step="1"
                                min="30"
-                               max="200"/>
+                               max="200" />
                         <p class="form__result" data-desired-weight-result>85 kg</p>
                     </div>
                 </article>
@@ -55,8 +55,10 @@
                                class="form__input"
                                step="1"
                                min="90"
-                               max="250"/>
-                        <p class="form__result" data-height-result>85 kg</p>
+                               max="250"
+                               value="160"
+                               oninput="myFunction()" />
+                        <p class="form__result" id="heightoutput"  data-height-result> 160 cm</p>
                     </div>
                 </article>
                 <article class="form__item">
@@ -83,8 +85,14 @@
     </main>
     <script src="./js/index.js"></script>
     <script>
-      const app = new App();
-      app.initializeApp();
+        const app = new App();
+        app.initializeApp();
+           function myFunction() {
+            var x = document.getElementById("Height").value;
+            document.getElementById("heightoutput").innerHTML = x+" cm";
+          }
+
+
     </script>
 </body>
 </html>
