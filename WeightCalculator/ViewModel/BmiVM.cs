@@ -68,9 +68,10 @@ namespace WeightCalculator.ViewModel
         {
             return Math.Abs(EndDate.Day - StartDate.Day);
         }
-        private int GetWeeks()
+        private double GetWeeks()
         {
-            return (Math.Abs(EndDate.Day - StartDate.Day))/7;
+            var xd =(EndDate.Date - StartDate.Date).TotalDays / 7;
+            return xd;
         }
         public BetterReturn KilosPerDay()
         {
