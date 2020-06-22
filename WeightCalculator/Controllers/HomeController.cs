@@ -16,26 +16,23 @@ namespace WeightCalculator.Controllers
         [HttpPost]
         public ActionResult Count(BmiVM BMI)
         {
-            var Model = new BmiVM {
-                Height=BMI.Height,
-                DesiredWeight=BMI.DesiredWeight,
-                InitWeight=BMI.InitWeight,
-                StartDate=BMI.StartDate,
-                EndDate=BMI.EndDate
+            var Model = new BmiVM
+            {
+                Height = BMI.Height,
+                DesiredWeight = BMI.DesiredWeight,
+                InitWeight = BMI.InitWeight,
+                StartDate = BMI.StartDate,
+                EndDate = BMI.EndDate
             };
-            if (ModelState.IsValidField("StartDate") && ModelState.IsValidField("EndDate"))
-            {  if (Model.StartDate.Date < DateTime.Now.Date || Model.EndDate.Date < DateTime.Now.Date)
-                {
-                    ModelState.AddModelError("StartDate", "Back To the future?");
-                }
-                else if (Model.StartDate.Date >= Model.EndDate.Date)
-                {
-                    ModelState.AddModelError("StartDate", "Start date should be lower than End Date");
-                }
-               
-             
+            if (Model.StartDate.Date < DateTime.Now.Date || Model.EndDate.Date < DateTime.Now.Date)
+            {
+                ModelState.AddModelError("StartDate", "Back To the future?");
             }
-            if (ModelState.IsValidField("InitWeight") && ModelState.IsValidField("DesiredWeight") && Model.InitWeight == Model.DesiredWeight)
+            else if (Model.StartDate.Date >= Model.EndDate.Date)
+            {
+                ModelState.AddModelError("StartDate", "Start date should be lower than End Date");
+            }
+            if (Model.InitWeight == Model.DesiredWeight)
             {
                 ModelState.AddModelError("InitWeight", "Initial Weight and Desired Weight cant be same");
             }
@@ -47,7 +44,7 @@ namespace WeightCalculator.Controllers
                 return Content(errorList.First().ToString());
             }
             else
-            return PartialView("_ResultView",Model);
+                return PartialView("_ResultView", Model);
         }
 
     }

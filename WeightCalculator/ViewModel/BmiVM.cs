@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -71,8 +72,8 @@ namespace WeightCalculator.ViewModel
         }
         private double GetWeeks()
         {
-            var xd =(EndDate.Date - StartDate.Date).TotalDays / 7;
-            return xd;
+            var Weekly =(EndDate.Date - StartDate.Date).TotalDays / 7;
+            return Weekly;
         }
         public BetterReturn KilosPerDay()
         {
