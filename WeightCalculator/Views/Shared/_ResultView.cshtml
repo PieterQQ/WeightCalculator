@@ -1,11 +1,11 @@
 ﻿@model WeightCalculator.ViewModel.BmiVM
 <section class="result" data-result>
-    <p class="result__paragraph">You want to lose <strong>10 kg</strong></p>
+    <p class="result__paragraph">You want to @Model.WeightDif().Text <strong> @Model.WeightDif().Value kg</strong></p>
     <p class="result__paragraph">
-        Your current BMI is <strong>@Model.InitWeight</strong> duzo
+        Your current BMI is <strong>@Model.CurrentBMI(Model.InitWeight).Value</strong> @Model.CurrentBMI(Model.InitWeight).Text
     </p>
     <p class="result__paragraph">
-        Your desired BMI is <strong>10</strong> duzo
+        Your desired BMI is <strong>@Model.CurrentBMI(Model.DesiredWeight).Value</strong> @Model.CurrentBMI(Model.DesiredWeight).Text
     </p>
     <p class="result__paragraph">
         You should lose <strong>10 kg</strong> per day
