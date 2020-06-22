@@ -21,7 +21,7 @@
     </header>
     <main class="content">
         <section class="form" data-form>
-            @using (Ajax.BeginForm("Count", "Home", new AjaxOptions { UpdateTargetId = "Result",HttpMethod="POST" }))
+            @using (Ajax.BeginForm("Count", "Home", new AjaxOptions { UpdateTargetId = "Result", HttpMethod = "POST" }))
             {
                 @Html.AntiForgeryToken();
                 <article class="form__item">
@@ -89,6 +89,7 @@
                     </div>
                 </article>
                 <button class="form__button" id="Count" data-button>Count</button>
+                @Html.ValidationSummary();
                 <div id="Result">
 
                 </div>
