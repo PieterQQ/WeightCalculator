@@ -75,7 +75,8 @@
                         <input type="date"
                                name="StartDate"
                                id="StartDate"
-                               class="form__input" />
+                               class="form__input"
+                               />
                     </div>
                 </article>
                 <article class="form__item">
@@ -99,6 +100,8 @@
 </main>
     <script src="./js/index.js"></script>
     <script>
+        document.getElementById("StartDate").valueAsDate = new Date();
+        document.getElementById("EndDate").valueAsDate = new Date();
         const app = new App();
         app.initializeApp();
            function myFunction(name,nameoutput) {
