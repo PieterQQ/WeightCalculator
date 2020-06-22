@@ -2,16 +2,16 @@
 <section class="result" data-result>
     <p class="result__paragraph">You want to @Model.WeightDif().Text <strong> @Model.WeightDif().Value kg</strong></p>
     <p class="result__paragraph">
-        Your current BMI is <strong>@Model.CurrentBMI(Model.InitWeight).Value</strong> @Model.CurrentBMI(Model.InitWeight).Text
+        Your current BMI is <strong>@Model.BmiCalc(Model.InitWeight).Value</strong> @Model.BmiCalc(Model.InitWeight).Text
     </p>
     <p class="result__paragraph">
-        Your desired BMI is <strong>@Model.CurrentBMI(Model.DesiredWeight).Value</strong> @Model.CurrentBMI(Model.DesiredWeight).Text
+        Your desired BMI is <strong>@Model.BmiCalc(Model.DesiredWeight).Value</strong> @Model.BmiCalc(Model.DesiredWeight).Text
     </p>
     <p class="result__paragraph">
-        You should lose <strong>10 kg</strong> per day
+         You should @Model.KilosPerDay().Text <strong>@Model.KilosPerDay().Value kg</strong> per day
     </p>
     <p class="result__paragraph">
-        You should lose <strong>10kg</strong> per week
+        @Model.KilosPerWeek().Text <strong>@Model.KilosPerWeek().Value </strong> @Model.KilosPerWeek().Unit
     </p>
 </section>
 <section class="result" data-result>

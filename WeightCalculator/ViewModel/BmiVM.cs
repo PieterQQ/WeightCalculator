@@ -12,6 +12,7 @@ namespace WeightCalculator.ViewModel
         public int DesiredWeight { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        
         public BetterReturn WeightDif()
         {
             var Weight = new BetterReturn();
@@ -24,7 +25,7 @@ namespace WeightCalculator.ViewModel
             Weight.Value = Math.Abs(InitWeight - DesiredWeight);
             return Weight;
         }
-        public BetterReturn CurrentBMI(int weight)
+        public BetterReturn BmiCalc(int weight)
         {
             var currentBMI = new BetterReturn();
             currentBMI.Value  = Math.Round((weight / (Math.Pow((double.Parse(Height.ToString()) / 100), 2))),2);
@@ -63,6 +64,41 @@ namespace WeightCalculator.ViewModel
 
             return currentBMI;
         }
-       
+        private int GetDays()
+        {
+            return Math.Abs(EndDate.Day - StartDate.Day);
+        }
+        private int GetWeeks()
+        {
+            return (Math.Abs(EndDate.Day - StartDate.Day))/7;
+        }
+        public BetterReturn KilosPerDay()
+        {
+            var KilosPerDay = new BetterReturn();
+            if (InitWeight > DesiredWeight)
+                KilosPerDay.Text = "lose";
+            else
+                KilosPerDay.Text = "gain";
+            KilosPerDay.Value = Math.Round(double.Parse(Math.Abs(InitWeight - DesiredWeight).ToString()) / double.Parse(GetDays().ToString()),2);
+            return KilosPerDay;
+        }
+        public BetterReturn KilosPerWeek()
+        {
+            var KilosPerWeek = new BetterReturn();
+            if (GetWeeks() >= 1)
+            {
+                if (InitWeight > DesiredWeight)
+                    KilosPerWeek.Text = "You should lose";
+                else
+                    KilosPerWeek.Text = "You should gain";
+                KilosPerWeek.Value = Math.Round(double.Parse(Math.Abs(InitWeight - DesiredWeight).ToString())
+             / double.Parse(GetWeeks().ToString()), 2);
+                KilosPerWeek.Unit = "kg per week";
+            }
+          
+
+         
+            return KilosPerWeek;
+        }
     }
 }

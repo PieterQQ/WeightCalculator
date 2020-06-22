@@ -8,6 +8,7 @@ namespace WeightCalculator.ViewModel
     public class BetterReturn
     {
         public string Text { get; set; }
-        public double Value { get; set; }
+        public double? Value { get; set; }
+        public string Unit { get; set; }
     }
 }
