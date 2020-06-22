@@ -2,6 +2,9 @@
 @model WeightCalculator.ViewModel.BmiVM
 <html lang="en">
 <head>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Desired weight calculator</title>
@@ -18,8 +21,9 @@
     </header>
     <main class="content">
         <section class="form" data-form>
-            @using (Html.BeginForm("Count", "Home", FormMethod.Post))
+            @using (Ajax.BeginForm("Count", "Home", new AjaxOptions { UpdateTargetId = "Result",HttpMethod="POST" }))
             {
+                @Html.AntiForgeryToken();
                 <article class="form__item">
                     <label for="weight-initial" class="form__label">@Html.LabelFor(b => b.InitWeight, "Initial Weight:")</label>
                     <div class="form__data">
@@ -31,8 +35,8 @@
                                min="30"
                                max="200"
                                value="85"
-                              oninput=myFunction(this.name,"InitWeightoutput") />
-                        <p class="form__result"id="InitWeightoutput" data-initial-weight-result>85 kg</p>
+                               oninput=myFunction(this.name,"InitWeightoutput") />
+                        <p class="form__result" id="InitWeightoutput" data-initial-weight-result>85 kg</p>
                     </div>
                 </article>
                 <article class="form__item">
@@ -45,8 +49,8 @@
                                step="1"
                                min="30"
                                max="200"
-                                 value="85"
-                                 oninput=myFunction(this.name,"DesiredWeightoutput") />
+                               value="85"
+                               oninput=myFunction(this.name,"DesiredWeightoutput") />
                         <p class="form__result" id="DesiredWeightoutput" data-desired-weight-result>85 kg</p>
                     </div>
                 </article>
@@ -62,7 +66,7 @@
                                max="250"
                                value="160"
                                oninput=myFunction(this.name,"HeightOutput") />
-                        <p class="form__result" id="HeightOutput"  data-height-result> 160 cm</p>
+                        <p class="form__result" id="HeightOutput" data-height-result> 160 cm</p>
                     </div>
                 </article>
                 <article class="form__item">
@@ -83,10 +87,16 @@
                                class="form__input" />
                     </div>
                 </article>
-                <button class="form__button" data-button>Count</button>
+                <button class="form__button" id="Count" data-button>Count</button>
+                <div id="Result">
+
+                </div>
             }
-        </section>
-    </main>
+
+
+
+
+</main>
     <script src="./js/index.js"></script>
     <script>
         const app = new App();
@@ -101,5 +111,6 @@
 
 
     </script>
+   
 </body>
 </html>

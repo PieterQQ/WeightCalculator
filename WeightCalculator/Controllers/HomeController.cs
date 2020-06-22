@@ -16,13 +16,14 @@ namespace WeightCalculator.Controllers
         [HttpPost]
         public ActionResult Count(BmiVM BMI)
         {
-            int Height = BMI.Height;
-            int InitWeight = BMI.InitWeight;
-            int DesiredWeight = BMI.DesiredWeight;
-            DateTime StartDate = BMI.StartDate;
-            DateTime EndDate = BMI.EndDate;
-
-            return View();
+            var Model = new BmiVM {
+                Height=BMI.Height,
+                DesiredWeight=BMI.DesiredWeight,
+                InitWeight=BMI.InitWeight,
+                StartDate=BMI.StartDate,
+                EndDate=BMI.EndDate
+            };
+            return PartialView("_ResultView",Model);
         }
 
     }

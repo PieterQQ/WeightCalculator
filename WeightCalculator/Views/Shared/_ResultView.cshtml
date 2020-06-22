@@ -1,0 +1,21 @@
+﻿@model WeightCalculator.ViewModel.BmiVM
+<section class="result" data-result>
+    <p class="result__paragraph">You want to lose <strong>10 kg</strong></p>
+    <p class="result__paragraph">
+        Your current BMI is <strong>@Model.InitWeight</strong> duzo
+    </p>
+    <p class="result__paragraph">
+        Your desired BMI is <strong>10</strong> duzo
+    </p>
+    <p class="result__paragraph">
+        You should lose <strong>10 kg</strong> per day
+    </p>
+    <p class="result__paragraph">
+        You should lose <strong>10kg</strong> per week
+    </p>
+</section>
+<section class="result" data-result>
+    <p class="result__paragraph">
+        Current and desired weight can't be equal, start and end date should be different
+    </p>
+
